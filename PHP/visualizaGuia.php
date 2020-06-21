@@ -1,36 +1,11 @@
 <?php 
 
-    include_once("BACKEND/conexao.php");
+	include_once("BACKEND/conexao.php");
+	include_once("bd_functions.php");
+	include_once("functions.php");
 
     $idG  = $_GET['id'];
-
-	$sql = "SELECT * FROM guias WHERE idGuia = '$idG'";
-	$consulta = $con->query($sql);
-	$linha = $consulta->fetch_all();
-
-	/*
-	Ordem do vetor linha
-		00 ID Guia
-		01 ID Autor
-		02 Conteudo Guia
-		03 Autor
-		04 Titulo Guia
-		05 Tag
-	*/
-
-	function loop($linha){
-		for($i = 0; $i < (sizeof($linha)); $i++){
-			$t = "<div class='col-sm-12'><div class='card'>";
-			$t .= "<h5 class='card-header text-center text-light' id='navbar'>".$linha[$i][4]."</h5>";
-			$t .= "<div class='card-body'><h5 class='card-title text-center text-muted'>Autor:".$linha[$i][3]."</h5>";
-			$t .= "<p class='card-text'><span style='padding: 5px;'>". $linha2[$i][0] . "</span>";
-			$t .= "<div class='text-center'>".$linha[$i][2]."</div>";
-			$t .= "<div class='like text-center'><button type='button' class='btn'id='botaoEnviar'>Gostei</button></div>";	
-			$t .= "</p></div></div></div><hr>";
-		
-			echo $t;
-		}
-	}
+	selecionarGuiaEspecifico($idG);
 ?>
 
 <!DOCTYPE html>
@@ -47,10 +22,9 @@
 		<span style="padding: 20px;"></span>		
 		<div class="col-sm-12">	
 			<?php
-				loop($linha);
+				imprimeGuia($linha2);
 			?>
 		</div>
-		
 	</div>	
 	
 	<?php include_once('../HTML/rodape.html');?>

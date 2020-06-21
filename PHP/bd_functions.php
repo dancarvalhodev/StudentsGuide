@@ -62,8 +62,28 @@
 		$_SESSION['id1'] = $array1['id'];	
 	}
 
+    function consultaPessoa($con, $id){
+        $sql = "SELECT * FROM pessoa WHERE idPessoa = $id";
+        $consulta = $con->query($sql);
+        $linha = $consulta->fetch_array();
 
+        return $linha;
+    }
 
+    function consultaAutorGuia($con, $id){
+        $sql2 = "SELECT * FROM guias WHERE idAutor = $id";
+        $consulta2 = $con->query($sql2);
+        $linha2 = $consulta2->fetch_all();	
 
+        return $linha2;
+    }
+
+    function selecionarGuiaEspecifico($idG){
+        $sql = "SELECT * FROM guias WHERE idGuia = '$idG'";
+        $consulta = $con->query($sql);
+        $linha2 = $consulta->fetch_all();
+
+        return $linha2;
+    }
 
 ?>

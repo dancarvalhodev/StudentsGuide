@@ -1,31 +1,14 @@
 <?php 
 
     include_once("BACKEND/conexao.php");
+	include_once("bd_functions.php");
+	include_once("functions.php");
 
 	$id = $_POST['campo'];
 	
-
-	$sql = "SELECT * FROM pessoa WHERE idPessoa = $id";
-	$consulta = $con->query($sql);
-	$linha = $consulta->fetch_array();
-	
-	$sql2 = "SELECT * FROM guias WHERE idAutor = $id";
-	$consulta2 = $con->query($sql2);
-	$linha2 = $consulta2->fetch_all();	
-	
-	function imprimeGuia($linha2){
-		for($i = 0; $i < (sizeof($linha2)); $i++){
-			$t = "<div class='mb-4'><div class='card'>";
-			$t .= "<h5 class='card-header text-center text-light' id='navbar'>".$linha2[$i][4]."</h5>";
-			$t .= "<div class='card-body'><h5 class='card-title text-center text-muted'>Autor:".$linha2[$i][3]."</h5>";
-			$t .= "<p class='card-text'><span style='display: none; padding: 5px;'>". $linha2[$i][0] . "</span>";	
-			$t .= "<div class='text-center'>".$linha2[$i][2]."</div>";
-			$t .= "<div class='like text-center'><button type='button' class='btn'id='botaoEnviar'>Gostei</button></div>";	
-			$t .= "</p></div></div></div><hr>";
-		
-			echo $t;
-		}
-	}
+	consultaPessoa($con, $id);
+	consultaAutorGuia($con, $id);
+	imprimeGuia($linha2);
 ?>
 
 
