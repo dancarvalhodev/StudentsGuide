@@ -6,6 +6,7 @@
 	$consulta = $con->query($sql);
 	$linha = $consulta->fetch_all();
 
+	
 	/*
 	Ordem do vetor linha
 		00 ID Guia

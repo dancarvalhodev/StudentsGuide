@@ -1,45 +1,12 @@
 <?php
+	include_once("bd_functions.php");
+	include_once("functions.php");
 	include_once("BACKEND/conexao.php");
 
 	$pesquisa = $_GET['pesquisa'];
 	$tag = $_GET['tag'];
-
-	if($tag == "palavra"){
-
-		$sql = "SELECT * FROM guias WHERE tituloGuia LIKE  '%$pesquisa%'";
-		$consulta = $con->query($sql);
-		$linha = $consulta->fetch_all();
-
-	}
-	else if($tag == "filtro"){
-		$sql = "SELECT * FROM guias WHERE tagGuia ='$pesquisa'";
-		$consulta = $con->query($sql);
-		$linha = $consulta->fetch_all();
-	}
-	/*
-	Ordem do vetor linha
-		00 ID Guia
-		01 ID Autor
-		02 Conteudo Guia
-		03 Autor
-		04 Titulo Guia
-		05 Tag
-	*/
-
-	function loop($linha){
-		for($i = 0; $i < (sizeof($linha)); $i++){
-			$t = "<div class='md-4'><div class='card'>";
-			$t .= "<h5 class='card-header text-center text-light' id='navbar'>".$linha[$i][4]."</h5>";
-			$t .= "<div class='card-body'><h5 class='card-title text-center text-muted'>Autor:".$linha[$i][3]."</h5>";
-			$t .= "<p class='card-text'><span style='display: none; padding: 5px;'>". $linha[$i][0] . "</span>";	
-			$t .= "<div class='text-center'>".$linha[$i][2]."</div>";
-			$t .= "<div class='like text-center'><button class='btn leia' id='botaoEnviar'><a style='color: white;' href='visualizaGuia.php?id=".$linha[$i][0]. "'>Leia Mais</a></button></div>";	
-			$t .= "</p></div></div></div><hr>";
-		
-			echo $t;
-		}
-	}
-
+	$linha = consultaGuiasSistema($con, $tag, $pesquisa);
+	imprimeGuiasDescobrir($linha);
 ?>
 
 <!DOCTYPE html>

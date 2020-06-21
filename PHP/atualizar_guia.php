@@ -1,14 +1,7 @@
 <?php
-	include_once("BACKEND/conexao.php");
-	
+	include_once("bd_functions.php");
 	$id = $_GET['id'];
-
-	$sql = "SELECT * FROM guias WHERE idGuia = $id";
-	$consulta = $con->query($sql);
-	$linha = $consulta->fetch_array();
-
-    $conteudoGuia = $linha['conteudoGuia'];
-    $tituloGuia = $linha['tituloGuia'];
+	selecionaGuiaUsuario($id);
 ?>
 
 
