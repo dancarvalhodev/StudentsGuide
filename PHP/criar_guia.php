@@ -72,82 +72,8 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	<script src="../JS/main.js" type="module"></script>
+	<script src="../JS/functions.js" type="module"></script>
 
-	<script>
-		var botao = document.querySelector(".botao");
-
-		let paragrafo = document.querySelector(".paragrafo");
-		let titulo = document.querySelector(".titulo");
-		let sublinhado = document.querySelector(".sublinhado");
-		let subTitulo = document.querySelector(".subTitulo");
-		let subTituloMenor = document.querySelector(".subTituloMenor");
-		let negrito = document.querySelector(".negrito");
-		let italico = document.querySelector(".italico");
-		let imagem = document.querySelector(".imagem");
-		let video = document.querySelector(".video");
-		let musica = document.querySelector(".musica");
-		
-		let s = document.querySelector("#cont");
-		
-		paragrafo.addEventListener("click", function(){
-			s.value += "<p></p>"
-		});	
-
-		titulo.addEventListener("click", function(){
-			s.value += "<h1></h1>"
-		});
-
-		subTitulo.addEventListener("click", function(){
-			s.value += "<h2></h2>"
-		});
-
-		sublinhado.addEventListener("click", function(){
-			s.value += "<u></u>"
-		});
-
-		subTituloMenor.addEventListener("click", function(){
-			s.value += "<h3></h3>"
-		});	
-
-		negrito.addEventListener("click", function(){
-			s.value += "<b></b>"
-		});
-
-		italico.addEventListener("click", function(){
-			s.value += "<em></em>"
-		});
-
-		imagem.addEventListener("click", function(){
-			s.value += '<img src=""></img>';
-		});
-
-		video.addEventListener("click", function(){
-			s.value += '<iframe src=""></iframe>';
-		});
-
-		musica.addEventListener("click", function(){
-			s.value += '<iframe src=""></iframe>';
-		});
-
-		botao.addEventListener("click", function(){
-			var titulo = document.getElementById("myText").value;
-			var tag = document.getElementById("mySelect").value;
-
-			if(titulo == ""){
-				alert("Por favor insira um titulo!");
-			}
-			else{
-				let conteudo = s.value;
-				var tam = conteudo.length -1;
-
-				var div = document.querySelector(".oi");
-				div.innerHTML = tam + " caracteres.";
-
-				window.location = "BACKEND/processaGuia.php?texto=" + conteudo + "&titulo=" + titulo + "&tag=" + tag;					
-			}
-		});
-
-	</script>
 </body>
 </html>

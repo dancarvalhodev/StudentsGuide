@@ -78,12 +78,62 @@
         return $linha2;
     }
 
-    function selecionarGuiaEspecifico($idG){
+    function selecionarGuiaEspecifico($con, $idG){
         $sql = "SELECT * FROM guias WHERE idGuia = '$idG'";
         $consulta = $con->query($sql);
         $linha2 = $consulta->fetch_all();
 
         return $linha2;
     }
+
+    function consultaUsuarios($con){
+        $sql = "SELECT * FROM pessoa";
+        $consulta = $con->query($sql);
+        $linha = $consulta->fetch_all();
+    }
+
+    function contaCurtidasGuias($con){
+        $sql = "SELECT COUNT(curtidaGuia)  AS SomaGuia, idGuia AS ID FROM curtidas GROUP BY IdGuia ORDER BY SomaGuia DESC LIMIT 10";
+        $consulta = $con->query($sql);
+        $linha = $consulta->fetch_all();  
+    }
+
+    function imprimeDezGuiasRanking($con){
+        for($i = 0; $i < 10; $i++){
+                                    
+            $b = $linha[$i][1];
+
+            $sql2 = "SELECT * FROM guias WHERE idGuia = $b";
+            $consulta2 = $con->query($sql2);
+            $linha2 = $consulta2->fetch_array();
+
+            $titulo = $linha2['tituloGuia'];
+        
+            echo '<tr class="text-center">'.'<td>' . $titulo .'</td>'.'<td>'. $linha[$i][0] .'</td>'.'</tr>';                
+        } 
+    }
+
+    function perfil($resposta){
+        if(isset($resposta)){
+            echo "
+                    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                      <strong>Sucesso</strong> O guia foi atualizado com sucesso!.
+                      <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>";
+        }
+    }
+
+    function selecionarTodosOsGuias($con){
+        $sql = "SELECT * FROM guias";
+        $consulta = $con->query($sql);
+        $linha2 = $consulta->fetch_all();
+
+        return $linha2;
+
+    }
+
+
 
 ?>

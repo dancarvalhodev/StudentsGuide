@@ -1,13 +1,8 @@
 <?php
-	if(isset($_GET['erro'])){
-		echo "
-				<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-				  <strong>Caro usuário!</strong> Os emails não conferem, por favor verifique!.
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>";
-	}
+	include_once("functions.php");
+	$erro = $_GET['erro'];
+
+	recuperaSenha($erro);
 ?>
 
 <!DOCTYPE html>

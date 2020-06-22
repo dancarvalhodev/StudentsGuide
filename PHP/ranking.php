@@ -1,23 +1,7 @@
 <?php 
-
     include_once("BACKEND/conexao.php");
-
-    $sql = "SELECT COUNT(curtidaGuia)  AS SomaGuia, idGuia AS ID FROM curtidas GROUP BY IdGuia ORDER BY SomaGuia DESC LIMIT 10";
-    $consulta = $con->query($sql);
-    $linha = $consulta->fetch_all();  
-
-    //echo sizeof($linha);
-
-    /*
-    SELECT COUNT(curtidaGuia)  AS SomaGuia, idGuia AS ID
-    FROM curtidas 
-    GROUP BY IdGuia
-    ORDER BY SomaGuia DESC
-    LIMIT 10;
-    */
-
-    //Fazer uma página para ver o guia quando clicar no nome
-
+    include_once("bd_functions.php");
+    include_once("functions.php");
 ?>
 
 
@@ -47,38 +31,15 @@
                             </thead>
                             <tbody>
                                 <?php
-
-                                if(sizeof($linha) < 10){
-                                    echo '
-                                    <script>
-                                        window.location = "index_logado.php?erro=1";
-                                    </script>';
-                                }
-                                else{
-                                    for($i = 0; $i < 10; $i++){
-                                        
-                                        $b = $linha[$i][1];
-
-                                        $sql2 = "SELECT * FROM guias WHERE idGuia = $b";
-                                        $consulta2 = $con->query($sql2);
-                                        $linha2 = $consulta2->fetch_array();
-
-                                        $titulo = $linha2['tituloGuia'];
-                                    
-                                        /*
-                                        Ordem do vetor linha
-                                            00 ID Guia
-                                            01 ID Autor
-                                            02 Conteudo Guia
-                                            03 Autor
-                                            04 Titulo Guia
-                                            05 Tag
-                                        */
-
-                                        echo '<tr class="text-center">'.'<td>'. '<a href="visualizaGuia.php?id=' . $linha[$i][1] .    '">' . $titulo . '</a>'.'</td>'.'<td>'. $linha[$i][0] .'</td>'.'</tr>';                
+                                    if(sizeof($linha) < 10){
+                                        echo '
+                                        <script>
+                                            window.location = "index_logado.php?erro=1";
+                                        </script>';
                                     }
-                                }                   
-
+                                    else{
+                                        imprimeDezGuiasRanking($con);
+                                    }                   
                                 ?>
                             </tbody>
                         </table>

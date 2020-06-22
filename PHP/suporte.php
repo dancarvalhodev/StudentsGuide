@@ -1,13 +1,8 @@
 <?php
-	if(isset($_GET['resposta'])){
-		echo "
-				<div class='alert alert-success alert-dismissible fade show' role='alert'>
-				  <strong>Sucesso</strong> A mensagem foi enviada com sucesso, entraremos em contato o mais rápido possivel!.
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>";
-	}
+	include_once("functions.php");
+	$resposta = $_GET['resposta'];
+	
+	suporte($resposta);
 ?>
 
 <!DOCTYPE html>

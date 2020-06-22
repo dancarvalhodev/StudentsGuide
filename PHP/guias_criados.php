@@ -43,15 +43,17 @@
 
 	
 	<script>
-		var a = <?php echo $_SESSION['id1']; ?>;
-		console.log(a);
+
+		//Atualizar Guia foi desativado para refatoração do metodo e para migrar para Ajax.
+
+		/*var id1 = <?php echo $_SESSION['id1']; ?>;
 		var botao1 = document.querySelector(".botao1");
-		console.log(botao1);
 
 		botao1.addEventListener("click", function(){
-			var id = a;
+			var id = id1;
 			window.location = "atualizar_guia.php?id=" + id;	
-		});	
+		});	*/
+		
 	</script>
 
 

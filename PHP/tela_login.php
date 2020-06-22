@@ -1,35 +1,10 @@
 <?php
+	include_once("functions.php");
 
 	$resposta = $_GET['mensagem'];
-
-	if(isset($resposta)){
-		if($resposta == 0){
-
-		}
-
-		else if($resposta == 1){
-
-			echo "
-					<div class='alert alert-success alert-dismissible fade show' role='alert'>
-					  <strong>Sucesso</strong> A senha foi alterada!.
-					  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-					    <span aria-hidden='true'>&times;</span>
-					  </button>
-					</div>";	
-		}
-		else if($resposta == 2){
-
-		echo "
-				<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-				  <strong>Caro usuário!</strong> Email ou senha incorretas, por favor verifique!.
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>";
-		}	
-	}	
-
+	tela_login($resposta);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

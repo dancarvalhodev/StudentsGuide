@@ -1,15 +1,9 @@
 <?php
+	include_once("functions.php");
+	include_once("bd_functions.php");
+	$resposta = $_GET['resposta'];
 
-	if(isset($_GET['resposta'])){
-		echo "
-				<div class='alert alert-success alert-dismissible fade show' role='alert'>
-				  <strong>Sucesso</strong> O guia foi atualizado com sucesso!.
-				  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button>
-				</div>";
-	}
-	
+	perfil($resposta);
 ?>	
 <!DOCTYPE html>
 <html lang="pt-br">

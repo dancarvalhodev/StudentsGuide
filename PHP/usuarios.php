@@ -1,25 +1,10 @@
 
 <?php
-	include_once("BACKEND/conexao.php");
+    include_once("BACKEND/conexao.php");
+    include_once("functions.php");
+    include_once("bd_functions.php");
 
-	$sql = "SELECT * FROM pessoa";
-	$consulta = $con->query($sql);
-    $linha = $consulta->fetch_all();
-    
-    function Lista($linha){
-        for($i = 0; $i < (sizeof($linha)); $i++){
-            echo "
-                <form method='POST' action='visualizaPerfilUsuario.php'>
-                    <div class='form-group'>
-                        <input style='display: none;' readonly='readonly' name='campo' value='" .  $linha[$i][0] . "'>
-                    </div>
-                    <div class='form-group text-center'>
-                        <input class='btn botaoUsu' style='background-color: transparent;' type='submit' value='" . $linha[$i][1] . "'>
-                    </div>    
-                </form>
-            ";
-        }    
-    }
+    consultaUsuarios($con);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +22,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <?php
-                    Lista($linha);
+                    imprimeUsuarios($linha);
                 ?>
             </div>    
         </div>
